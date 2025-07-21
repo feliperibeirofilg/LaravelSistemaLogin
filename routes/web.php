@@ -23,9 +23,10 @@ Route::post('/logout', [LoginController::class, 'sair'])->name('logout');
 
 // Formulário de edição
 Route::get('/usuario/editarusuario/{id}', [UsuarioController::class, 'editarCadastro'])->name('usuario.editarusuario');
-
 // Salvar alterações
 Route::post('/usuario/atualizar/{id}', [UsuarioController::class, 'atualizarCadastro'])->name('usuario.atualizar');
+
+Route::delete('/usuario/deletar/{id}', [UsuarioController::class, 'excluirCadastro'])->name('usuario.excluir');
 //Tela antes de editar
 Route::get('/usuario/listarusuarios', [UsuarioController::class, 'listarUsuarios'])->name('usuario.listarusuarios');
 

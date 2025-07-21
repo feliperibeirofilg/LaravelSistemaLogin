@@ -22,7 +22,13 @@
                 <td>
                     <a href="{{ route('usuario.editarusuario', ['id' => $usuario->id]) }}" class="btn btn-primary btn-sm">Editar</a>
                 </td>
-            </tr>
+                <td>
+                    <form action="{{ route('usuario.excluir', ['id' => $usuario->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este usuário?">Excluir</button>
+                    </form>
+                </tr>
             @endforeach
         </tbody>
     </table>

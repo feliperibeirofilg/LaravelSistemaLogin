@@ -21,7 +21,13 @@
                 <td>
                     <a href="<?php echo e(route('usuario.editarusuario', ['id' => $usuario->id])); ?>" class="btn btn-primary btn-sm">Editar</a>
                 </td>
-            </tr>
+                <td>
+                    <form action="<?php echo e(route('usuario.excluir', ['id' => $usuario->id])); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este usuário?">Excluir</button>
+                    </form>
+                </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
     </table>

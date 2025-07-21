@@ -57,5 +57,11 @@ class UsuarioController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Usuario atualizado com sucesso.');
     }
+
+    public function excluirCadastro(Request $request, $id){
+        $usuarios = Usuario::findOrFail($id);
+        $usuarios -> delete();
+        return redirect()->route('usuario.listarusuarios')->with('success', 'Usuario deletado com sucesso.');   
+    }
     
 }
