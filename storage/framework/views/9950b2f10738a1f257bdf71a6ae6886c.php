@@ -1,34 +1,22 @@
 <?php $__env->startSection('content'); ?>
 
-    <div class="container">
-        <h2>Editar Usuários</h2>
-
-        <?php if($errors->any()): ?>
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $erro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><?php echo e($erro); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-        <?php endif; ?>
-    
-
-        <form action="<?php echo e(route('usuario.atualizar', $usuarios->id)); ?>" method="POST">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <form action="<?php echo e(route('usuario.atualizar', $usuarios->id)); ?>" method="POST" class="bg-white p-4 rounded shadow" style="width: 100%; max-width: 500px;">
             <?php echo csrf_field(); ?>
+            <h2 class="mb-4 text-center fw-bold">Editar Usuários</h2>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input name="nome"type="text" class="form-control" value="<?php echo e($usuarios->nome); ?>" required>
+                <input class="form-control border border-dark rounded" name="nome"type="text" class="form-control" value="<?php echo e($usuarios->nome); ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input name="email" type="text" class="form-control" value="<?php echo e($usuarios->email); ?>" required>
+                <input class="form-control border border-dark rounded" name="email" type="text" class="form-control" value="<?php echo e($usuarios->email); ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="admin" class="form-label">É Admin?</label>
-                <select name="admin" class="form-select" >
+                <select name="admin" class="form-select" class="form-control border border-dark rounded">
                     <option value="1" <?php echo e($usuarios->admin ? 'selected' : ''); ?>>Sim</option>
                     <option value="0" <?php echo e($usuarios->admin ? 'selected' : ''); ?>>Não</option>
                 </select>
